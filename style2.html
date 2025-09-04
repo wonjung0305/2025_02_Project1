@@ -9,64 +9,179 @@
   <style>
     #top h1 {
       font-size: 60px;
-      font-family: Arial;
       font-weight: bold;
+      color: white;
     }
+
     #top p {
       font-size: 30px;
+      color: white;
+    }
+
+    body {
+      font-family: Arial;
+      background-color: rgb(197, 51, 42);
+      line-height: 1.2; /* line-height는 배수로 사용해서 겹치지 않도록 */
     }
 
 
+    .wrapper {
+      position: relative;
+      overflow: auto;
+    }
+
+    .menuitem {
+      list-style: none;
+      margin: 10px;
+      width: 155px;
+      border-radius: 40px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .menuitem>a { /* 링크가 있는 영역을 block으로 만들어서 누르면 이동하도록 */
+      display: block;
+      padding: 5px;
+      border: 1px solid #d14836;
+      border-radius: 40px;
+      background-color: #d14836;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: Verdana;
+    }
+
+    .menuitem>a:hover {
+      background-color: #ffffff;
+      color: #d14836;
+    }
+
+    .menuitem:nth-child(2) >a {
+      background-color: #ffffff;
+      color: #d14836;
+      font-weight: bold;
+    }
+
+    #menubar {
+      width: 190px;
+      float: right;
+    }
+
+    #menulist {
+      padding: 0;
+      font: 16px verdana;
+    }
+
+    #main {
+      background-color: #ffffff;
+      font: 80% Verdana;
+      padding: 10px;
+    }
+
+    #main h1 {
+      color: #d14836;
+      font-weight: bold;
+      margin: 17.152px;
+    }
+
+    #main>p>a:link,
+    #main>p>a:visited {
+      text-decoration: none;
+      color: #d14836;
+      cursor: pointer;
+    }
+
+    #main>p>a:hover {
+      text-decoration: underline;
+    }
+
+    #main h2 {
+      color: #d14836;
+    }
+
+    #sidebar {
+      background-color: #F6DAD7;
+      color: #d14836;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+
+    #bottom {
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 70%;
+    }
   </style>
 </head>
 
 <body>
+
   <header>
     <div id="top">
       <h1>Welcome to 22200145's Homepage</h1>
       <p>Use the menu to select different Stylesheets</p>
     </div>
-
   </header>
 
+  <div class="wrapper">
+    <div id="menubar">
+      <ul id="menulist">
+        <li class="menuitem"><a href="style1.html">Stylesheet 1</a></li>
+        <li class="menuitem"><a href="style2.html">Stylesheet 2</a></li>
+        <li class="menuitem"><a href="style3.html">Stylesheet 3</a></li>
+        <li class="menuitem"><a href="style4.html">Stylesheet 4</a></li>
+        <li class="menuitem"><a href="NoStylesheet.html">No Stylesheet</a></li>
+      </ul>
+    </div>
+
+    <div id="main">
+      <h1>Same Page Different Stylesheets</h1>
+
+      <p>This is a demonstration of how different stylesheets can change the layout of your HTML page. You can change
+        the
+        layout of this page by selecting different stylesheets in the menu, or by selecting one of the following links:
+        <br>
+        <a href="style1.html">Stylesheet1</a>, <a href="style2.html">Stylesheet2</a>, <a
+          href="style3.html">Stylesheet3</a>,
+        <a href="style4.html">Stylesheet4</a>.
+      </p>
 
 
-  <ul>
-    <li>Stylesheet 1</li>
-    <li>Stylesheet 2</li>
-    <li>Stylesheet 3</li>
-    <li>Stylesheet 4</li>
-    <li>No Stylesheet</li>
-  </ul>
+      <h2>No Styles</h2>
 
-  <h1>Same Page Different Stylesheets</h1>
+      <p>This page uses DIV elements to group different sections of the HTML page. Click here to see how the page looks
+        like
+        with no stylesheet: <br> <a href="NoStylesheet.html">No Stylesheet</a>.</p>
+    </div>
 
-  <p>This is a demonstration of how different stylesheets can change the layout of your HTML page. You can change the
-    layout of this page by selecting different stylesheets in the menu, or by selecting one of the following links:</p>
+    <div id="sidebar">
+      <h3>Side-Bar</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+        dolore
+        magna aliquam erat volutpat.
+      </p>
+    </div>
 
-  <a href="style1.html">Stylesheet1</a>, <a href="style2.html">Stylesheet2</a>, <a href="style3.html">Stylesheet3</a>,
-  <a href="style4.html">Stylesheet4</a>
+  </div>
 
-  <h2>No Styles</h2>
+  <footer>
+    <div id="bottom">
+      <p>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+        dolore
+        magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+        lobortis
+        nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
+        molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim
+        qui
+        blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+      </p>
+    </div>
+  </footer>
 
-  <p>This page uses DIV elements to group different sections of the HTML page. Click here to see how the page looks like
-    with no stylesheet: <br> <a href="NoStylesheet.html">No Stylesheet</a>.</p>
 
-
-  <h3>Side-Bar</h3>
-  <p>
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-    magna aliquam erat volutpat.
-  </p>
-
-
-  <p>
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-    magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-    nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-    molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
-    blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-  </p>
 
 </body>
 
