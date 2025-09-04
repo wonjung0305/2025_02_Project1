@@ -12,6 +12,8 @@
       background-color: #04AA6D;
       color: #ffffff;
       padding: 15px;
+      border-radius: 4px;
+      margin: 4px;
     }
 
     #top,
@@ -23,8 +25,9 @@
     }
 
     #wrapper {
-      position: relative;
-      overflow: auto;
+      display: flex;
+      align-items: stretch;
+      gap: 16px; 
     }
 
     #top h1,
@@ -36,12 +39,13 @@
 
     #left {
       width: 200px;
-      float: left;
+      flex: 0 0 200px;
     }
 
     #middle {
       padding: 10px;
-      margin: 0 210px;
+      margin: 0;
+      flex: 1 1 auto;
     }
 
     #right {
@@ -49,10 +53,7 @@
       color: #ffffff;
       padding: 10px;
       width: 180px;
-      bottom: 0;
-      top: 0;
-      right: 0;
-      position: absolute;
+      flex: 0 0 180px;
     }
 
     #bottom {
@@ -107,6 +108,19 @@
     #middle a:hover {
       text-decoration: none;
     }
+
+    /* 반응형으로 만들기: 화면이 가로로 좁아지면 세로로 쌓음 */
+    @media (max-width:900px){
+      #wrapper{
+        flex-direction: column; /* 세로로 쌓기 */
+      }
+
+      #left, #middle, #right{
+        flex: 1 1 auto; /* 칸 들이 가로로 꽉 채움 */
+        width: 100%; /* 모바일에서 전체 폭 */
+      }
+    }
+
   </style>
 </head>
 
