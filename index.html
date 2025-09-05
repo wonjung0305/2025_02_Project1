@@ -1,11 +1,546 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>포트폴리오 | Your Name</title>
+  <meta name="description" content="개발자 포트폴리오: 소개, 프로젝트, 활동 기록, 연락처" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0a0a0a;
+      --muted: #6b7280; /* 회색 텍스트 */
+      --lime: #a3e635;  /* 연두 */
+      --lime-strong: #84cc16; /* 진한 연두 */
+      --accent: #16a34a; /* 초록 악센트 */
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Apple SD Gothic Neo, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: linear-gradient(180deg, #f8fff1 0%, #ffffff 30%);
+      line-height: 1.6;
+    }
+
+    /* 헤더 */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: saturate(180%) blur(10px);
+      background: rgba(255,255,255,0.8);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .brand-badge {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--lime), var(--lime-strong));
+      border: 1px solid #e2f7b9;
+      box-shadow: 0 6px 14px rgba(132,204,22,0.35);
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 10px;
+      transition: transform .15s ease, background-color .15s ease;
+    }
+    nav a:hover {
+      background: #f2fadf;
+      transform: translateY(-1px);
+    }
+
+    /* 히어로 */
+    .hero {
+      max-width: 1100px;
+      margin: 40px auto 24px;
+      padding: 28px 20px 0;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow .dot {
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: var(--lime-strong);
+      box-shadow: 0 0 0 3px rgba(163,230,53,0.35);
+    }
+    h1 {
+      margin: 12px 0 10px;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.15;
+    }
+    .subtitle { color: var(--muted); font-size: 15px; }
+    .hero-cta { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 14px;
+      border-radius: 12px; border: 1px solid var(--border);
+      background: #f8fff1;
+      font-weight: 700; text-decoration: none; color: #14532d;
+      transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); background: #f1ffd1; }
+    .btn-primary { background: linear-gradient(135deg, var(--lime), var(--lime-strong)); color: #12330a; border-color: #d7f49c; }
+    .btn-primary:hover { background: linear-gradient(135deg, #b3f043, #9ad52b); }
+
+    .profile {
+      background: radial-gradient(120px 120px at 80% 20%, #eaffb5 0%, rgba(255,255,255,0) 60%), var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .avatar {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 6px solid #f2ffd5;
+      box-shadow: 0 15px 24px rgba(163,230,53,0.35);
+      background: url('https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=300&auto=format&fit=crop') center/cover no-repeat;
+      margin: 10px auto 14px;
+    }
+    .socials { display:flex; justify-content:center; gap:10px; margin-top:10px; }
+    .socials a { font-size:13px; color: #065f46; text-decoration:none; padding:6px 10px; border-radius:8px; background:#ecfccb; border:1px solid #d9f99d; }
+
+    /* 공통 섹션 */
+    section { padding: 64px 20px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom: 18px; }
+    .section-head h2 { margin:0; font-size: clamp(22px, 4vw, 30px); }
+    .section-desc { color: var(--muted); font-size: 14px; }
+
+    /* 프로젝트 */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .col-4 { grid-column: span 4; }
+    @media (max-width: 920px) { .col-4 { grid-column: span 6; } }
+    @media (max-width: 640px) { .col-4 { grid-column: span 12; } }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column; gap: 10px;
+      transition: transform .15s ease;
+    }
+    .card:hover{ transform: translateY(-2px); }
+    .thumb {
+      aspect-ratio: 16/9; border-radius: 12px; background: #ecfccb;
+      border: 1px dashed #d9f99d;
+      display:grid; place-items:center; color:#3f6212; font-weight:700;
+    }
+    .tags { display:flex; gap:6px; flex-wrap:wrap; }
+    .tag { font-size: 12px; padding: 4px 8px; background:#f0fdf4; border:1px solid #dcfce7; border-radius: 999px; color:#14532d; }
+
+    .toolbar { display:flex; gap:10px; flex-wrap:wrap; }
+    .input, select {
+      padding: 10px 12px; border:1px solid var(--border); border-radius: 10px; background:#ffffff;
+    }
+
+    /* 활동 기록(타임라인) */
+    .timeline { position: relative; margin-top: 10px; }
+    .timeline::before {
+      content: ""; position: absolute; top: 0; left: 10px; bottom: 0; width: 2px; background: #e3f2b7;
+    }
+    .entry { position: relative; padding-left: 32px; margin: 16px 0; }
+    .entry::before {
+      content: ""; position: absolute; left: 2px; top: 6px; width: 16px; height: 16px; border-radius: 999px; background: var(--lime-strong); box-shadow: 0 0 0 3px #eaffb5;
+    }
+    .entry h4 { margin: 0 0 6px; }
+    .entry .meta { font-size: 12px; color: var(--muted); }
+
+    /* 스킬 */
+    .skills { display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; }
+    @media (max-width: 720px){ .skills { grid-template-columns: 1fr; } }
+    .skill {
+      border:1px solid var(--border); border-radius: 12px; padding: 12px; background:#fff; box-shadow: var(--shadow);
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .meter {
+      position: relative; flex:1; height: 10px; background:#ecfccb; border-radius: 999px; overflow:hidden; border:1px solid #d9f99d; margin: 0 10px;
+    }
+    .meter > span { position:absolute; left:0; top:0; bottom:0; width: var(--val, 60%); background: linear-gradient(90deg, var(--lime), var(--lime-strong)); }
+
+    /* 연락처 */
+    form { display:grid; gap:12px; }
+    textarea { min-height: 120px; resize: vertical; }
+
+    /* 푸터 */
+    footer { border-top:1px solid var(--border); background:#faffea; }
+    .footer-inner{ max-width:1100px; margin: 0 auto; padding: 20px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
+    .small { font-size: 12px; color: var(--muted); }
+
+    /* 플로팅 버튼 */
+    .float {
+      position: fixed; right: 18px; bottom: 18px; z-index: 60;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .fab { width: 48px; height: 48px; border-radius: 999px; border:1px solid #d7f49c; background: linear-gradient(135deg, var(--lime), var(--lime-strong)); box-shadow: 0 10px 24px rgba(163,230,53,0.45); display:grid; place-items:center; font-weight:900; color:#12330a; cursor:pointer; }
+  </style>
 </head>
 <body>
-  index.html Page
+  <!-- 헤더 -->
+  <header>
+    <div class="nav" role="navigation" aria-label="주요">
+      <div class="brand"><span class="brand-badge" aria-hidden="true"></span> <span>YOUR NAME</span></div>
+      <nav>
+        <a href="#about">소개</a>
+        <a href="#projects">작업물</a>
+        <a href="#activity">활동 기록</a>
+        <a href="#skills">스킬</a>
+        <a href="#contact">연락처</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 히어로 -->
+  <main class="hero" id="top">
+    <section class="hero-card" aria-labelledby="hero-title">
+      <div class="eyebrow"><span class="dot"></span> Portfolio</div>
+      <h1 id="hero-title">사용자 중심으로 만드는 <span style="background:linear-gradient(transparent 60%, #eaffb5 60%);">풀스택 개발자</span>의 포트폴리오</h1>
+      <p class="subtitle">자바(Java)와 스프링(Spring Boot), 그리고 HTML/CSS/JS를 중심으로 한 프로젝트 경험을 정리했습니다. 아래에서 작업물, 공부 기록, 그리고 기술 스택을 확인하실 수 있습니다.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#projects">작업물 보기</a>
+        <a class="btn" href="#contact">협업 문의</a>
+      </div>
+    </section>
+    <aside class="profile" aria-label="프로필">
+      <div class="avatar" aria-hidden="true" title="프로필 이미지"></div>
+      <h3 style="margin:10px 0 6px;">Your Name</h3>
+      <div class="small">Computer Science | Backend · Java & Spring</div>
+      <div class="socials" aria-label="소셜 링크">
+        <a href="#" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" target="_blank" rel="noopener">Blog</a>
+      </div>
+    </aside>
+  </main>
+
+  <!-- 소개 -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>소개 (About Me)</h2>
+        <p class="section-desc">간단 자기소개와 관심 분야</p>
+      </div>
+      <div class="card">
+        <p>
+          안녕하세요. 문제를 작게 나눠 빠르게 실험하고, 사용자 피드백으로 개선하는 것을 좋아합니다.
+          최근에는 <strong>Spring Boot 기반 API 서버</strong>, <strong>데이터 구조/알고리즘</strong>, <strong>프론트엔드 UI/UX</strong>에 집중하고 있습니다.
+        </p>
+        <ul>
+          <li>관심사: 백엔드 아키텍처, API 설계, DevOps(간단한 CI/CD), 클린 코드</li>
+          <li>가치관: 단순한 구조, 명확한 커뮤니케이션, 꾸준한 기록</li>
+          <li>목표: 학부 프로젝트를 서비스 수준으로 개선하여 실제 사용자에게 배포</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 프로젝트 -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <h2>작업물 (Projects)</h2>
+        <p class="section-desc">링크를 통해 상세 페이지 또는 저장소로 이동합니다.</p>
+      </div>
+
+      <div class="toolbar" style="margin-bottom:12px;">
+        <input id="filterInput" class="input" type="search" placeholder="프로젝트 검색 (이름/태그)" aria-label="프로젝트 검색" />
+        <button class="btn" id="addProjectBtn" type="button">+ 프로젝트 추가</button>
+      </div>
+
+      <div class="grid" id="projectGrid" aria-live="polite">
+        <!-- 카드 예시 (JS로 렌더링) -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 활동 기록 -->
+  <section id="activity">
+    <div class="container">
+      <div class="section-head">
+        <h2>활동 기록 (Activity Log)</h2>
+        <p class="section-desc">학습/개발 진행 상황을 간단히 남겨 보세요. 로컬에 저장됩니다.</p>
+      </div>
+
+      <div class="card" style="margin-bottom:12px;">
+        <form id="activityForm" aria-label="활동 기록 추가">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <input class="input" type="date" id="actDate" required />
+            <input class="input" type="text" id="actTitle" placeholder="제목 (예: 스프링 보안 공부)" required />
+          </div>
+          <textarea class="input" id="actNote" placeholder="내용 (예: JWT 인증 흐름 정리 및 샘플 코드 작성)" required></textarea>
+          <div style="display:flex; gap:10px;">
+            <button class="btn btn-primary" type="submit">기록 추가</button>
+            <button class="btn" type="button" id="clearActivity">전체 삭제</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="timeline" id="timeline" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- 스킬 -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-head">
+        <h2>스킬 (Skills)</h2>
+        <p class="section-desc">자신 있는 기술과 익숙한 도구들</p>
+      </div>
+      <div class="skills" id="skillList">
+        <div class="skill"><span>Java / Spring</span><div class="meter"><span style="--val:85%"></span></div><span>85%</span></div>
+        <div class="skill"><span>HTML / CSS / JS</span><div class="meter"><span style="--val:80%"></span></div><span>80%</span></div>
+        <div class="skill"><span>C / C++</span><div class="meter"><span style="--val:65%"></span></div><span>65%</span></div>
+        <div class="skill"><span>DB (MySQL)</span><div class="meter"><span style="--val:70%"></span></div><span>70%</span></div>
+        <div class="skill"><span>Git / GitHub</span><div class="meter"><span style="--val:75%"></span></div><span>75%</span></div>
+        <div class="skill"><span>Linux / Shell</span><div class="meter"><span style="--val:60%"></span></div><span>60%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 연락처 -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>연락처 (Contact)</h2>
+        <p class="section-desc">협업/문의는 아래 양식을 사용하거나 이메일을 이용해 주세요.</p>
+      </div>
+      <div class="grid">
+        <div class="col-4" style="grid-column: span 7;">
+          <div class="card">
+            <form id="contactForm">
+              <input class="input" type="text" id="cName" placeholder="이름" required />
+              <input class="input" type="email" id="cEmail" placeholder="이메일" required />
+              <textarea class="input" id="cMsg" placeholder="메시지" required></textarea>
+              <button class="btn btn-primary" type="submit">메시지 보내기</button>
+              <div class="small" id="contactFeedback" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+        <div class="col-4" style="grid-column: span 5;">
+          <div class="card">
+            <h3 style="margin:0 0 8px;">기타</h3>
+            <ul style="margin:0; padding-left:18px;">
+              <li>이메일: <a href="mailto:you@example.com">you@example.com</a></li>
+              <li>이력서: <a href="#" download>PDF 다운로드</a> (파일 연결)</li>
+              <li>거주지: 서울</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="small">© <span id="year"></span> Your Name. All rights reserved.</div>
+      <div class="small">Made with <span aria-hidden="true">💚</span> White · Lime theme</div>
+    </div>
+  </footer>
+
+  <!-- 플로팅: 맨 위로 / 새 활동 -->
+  <div class="float" aria-hidden="false">
+    <button class="fab" title="맨 위로" id="toTop" aria-label="맨 위로">↑</button>
+  </div>
+
+  <script>
+    // ===== 유틸 =====
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    // ===== 푸터 연도 =====
+    $('#year').textContent = new Date().getFullYear();
+
+    // ===== 스무스 스크롤(내장 지원 브라우저) =====
+    $$('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    // ===== 맨 위로 =====
+    $('#toTop').addEventListener('click', ()=> window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ===== 프로젝트 데이터 (수정/추가 가능) =====
+    const defaultProjects = [
+      { id: crypto.randomUUID(), name: 'Board API (Spring Boot)', link: '#', tags:['Java','Spring','REST'], desc:'게시판 API 서버: CRUD, JWT 인증' },
+      { id: crypto.randomUUID(), name: 'Study Group Analyzer', link: '#', tags:['Java','CLI'], desc:'학생 스터디 그룹 통계/분석 도구' },
+      { id: crypto.randomUUID(), name: 'NotionFlow Dashboard', link: '#', tags:['HTML','CSS','JS'], desc:'API 키 관리/캘린더 UI 실험' },
+    ];
+
+    const LS_KEYS = {
+      PROJECTS: 'pf-projects',
+      ACTIVITY: 'pf-activity'
+    };
+
+    const load = (k, fallback) => { try { return JSON.parse(localStorage.getItem(k)) ?? fallback; } catch { return fallback; } };
+    const save = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+
+    let projects = load(LS_KEYS.PROJECTS, defaultProjects);
+
+    function renderProjects(list = projects){
+      const grid = $('#projectGrid');
+      grid.innerHTML = '';
+      if(list.length === 0){
+        grid.innerHTML = '<div class="card" style="grid-column: span 12;">등록된 프로젝트가 없습니다. "+ 프로젝트 추가" 버튼으로 추가하세요.</div>';
+        return;
+      }
+      list.forEach(p=>{
+        const col = document.createElement('div');
+        col.className = 'col-4';
+        col.innerHTML = `
+          <article class="card" aria-label="프로젝트 카드">
+            <div class="thumb">썸네일</div>
+            <h3 style="margin:6px 0 4px;">${p.name}</h3>
+            <p class="small" style="margin:0 0 6px; color: var(--muted);">${p.desc ?? ''}</p>
+            <div class="tags">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+            <div style="display:flex; gap:8px; margin-top:8px;">
+              <a class="btn btn-primary" href="${p.link}" target="_blank" rel="noopener">열기</a>
+              <button class="btn" data-del="${p.id}">삭제</button>
+            </div>
+          </article>`;
+        $('#projectGrid').appendChild(col);
+      });
+    }
+
+    renderProjects();
+
+    // 필터
+    $('#filterInput').addEventListener('input', (e)=>{
+      const q = e.target.value.toLowerCase().trim();
+      const filtered = projects.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        (p.tags||[]).some(t=>t.toLowerCase().includes(q)) ||
+        (p.desc||'').toLowerCase().includes(q)
+      );
+      renderProjects(filtered);
+    });
+
+    // 추가
+    $('#addProjectBtn').addEventListener('click', ()=>{
+      const name = prompt('프로젝트 이름을 입력하세요.');
+      if(!name) return;
+      const link = prompt('프로젝트 링크(URL)를 입력하세요. (예: https://github.com/사용자/저장소)') || '#';
+      const tags = prompt('태그를 콤마로 구분해 입력(예: Java,Spring,REST)')?.split(',').map(s=>s.trim()).filter(Boolean) ?? [];
+      const desc = prompt('간단 설명을 입력하세요.') || '';
+      const item = { id: crypto.randomUUID(), name, link, tags, desc };
+      projects.unshift(item);
+      save(LS_KEYS.PROJECTS, projects);
+      renderProjects();
+    });
+
+    // 삭제 (이벤트 위임)
+    $('#projectGrid').addEventListener('click', (e)=>{
+      const btn = e.target.closest('button[data-del]');
+      if(!btn) return;
+      const id = btn.getAttribute('data-del');
+      projects = projects.filter(p=>p.id !== id);
+      save(LS_KEYS.PROJECTS, projects);
+      renderProjects();
+    });
+
+    // ===== 활동 기록 =====
+    let activity = load(LS_KEYS.ACTIVITY, [
+      { id: crypto.randomUUID(), date: new Date().toISOString().slice(0,10), title: '포트폴리오 페이지 제작', note: 'HTML/CSS/JS 베이스 구현 및 연두 테마 적용' }
+    ]);
+
+    function renderActivity(){
+      const root = $('#timeline');
+      root.innerHTML = '';
+      if(activity.length === 0){ root.innerHTML = '<div class="card">아직 기록이 없습니다.</div>'; return; }
+      // 최신 날짜 우선
+      const sorted = [...activity].sort((a,b)=> (a.date < b.date ? 1 : -1));
+      sorted.forEach(item=>{
+        const el = document.createElement('article');
+        el.className = 'entry';
+        el.innerHTML = `
+          <h4>${item.title}</h4>
+          <div class="meta">${item.date}</div>
+          <p style="margin:6px 0 0;">${item.note}</p>
+        `;
+        root.appendChild(el);
+      });
+    }
+
+    renderActivity();
+
+    $('#activityForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const date = $('#actDate').value || new Date().toISOString().slice(0,10);
+      const title = $('#actTitle').value.trim();
+      const note = $('#actNote').value.trim();
+      if(!title || !note){ return; }
+      activity.push({ id: crypto.randomUUID(), date, title, note });
+      save(LS_KEYS.ACTIVITY, activity);
+      e.target.reset();
+      renderActivity();
+    });
+
+    $('#clearActivity').addEventListener('click', ()=>{
+      if(confirm('활동 기록을 모두 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.')){
+        activity = [];
+        save(LS_KEYS.ACTIVITY, activity);
+        renderActivity();
+      }
+    });
+
+    // ===== 연락처 폼 (데모) =====
+    $('#contactForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      // 실제 전송 로직 대신 데모 응답
+      $('#contactFeedback').textContent = '메시지가 임시로 저장되었습니다. 실제 전송 로직(API)은 연결 후 사용할 수 있습니다.';
+      e.target.reset();
+      setTimeout(()=> $('#contactFeedback').textContent = '', 4000);
+    });
+  </script>
 </body>
 </html>
