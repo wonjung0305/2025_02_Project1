@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,17 +10,28 @@
     :root {
       --bg: #ffffff;
       --text: #0a0a0a;
-      --muted: #6b7280; /* 회색 텍스트 */
-      --lime: #a3e635;  /* 연두 */
-      --lime-strong: #84cc16; /* 진한 연두 */
-      --accent: #16a34a; /* 초록 악센트 */
+      --muted: #6b7280;
+      /* 회색 텍스트 */
+      --lime: #a3e635;
+      /* 연두 */
+      --lime-strong: #84cc16;
+      /* 진한 연두 */
+      --accent: #16a34a;
+      /* 초록 악센트 */
       --card: #ffffff;
       --border: #e5e7eb;
-      --shadow: 0 10px 25px rgba(0,0,0,0.08);
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Apple SD Gothic Neo, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -34,9 +46,10 @@
       top: 0;
       z-index: 50;
       backdrop-filter: saturate(180%) blur(10px);
-      background: rgba(255,255,255,0.8);
+      background: rgba(255, 255, 255, 0.8);
       border-bottom: 1px solid var(--border);
     }
+
     .nav {
       max-width: 1100px;
       margin: 0 auto;
@@ -46,6 +59,7 @@
       justify-content: space-between;
       gap: 16px;
     }
+
     .brand {
       display: flex;
       align-items: center;
@@ -53,13 +67,16 @@
       font-weight: 800;
       letter-spacing: 0.2px;
     }
+
     .brand-badge {
-      width: 28px; height: 28px;
+      width: 28px;
+      height: 28px;
       border-radius: 8px;
       background: linear-gradient(135deg, var(--lime), var(--lime-strong));
       border: 1px solid #e2f7b9;
-      box-shadow: 0 6px 14px rgba(132,204,22,0.35);
+      box-shadow: 0 6px 14px rgba(132, 204, 22, 0.35);
     }
+
     nav a {
       text-decoration: none;
       color: var(--text);
@@ -68,6 +85,7 @@
       border-radius: 10px;
       transition: transform .15s ease, background-color .15s ease;
     }
+
     nav a:hover {
       background: #f2fadf;
       transform: translateY(-1px);
@@ -83,6 +101,7 @@
       gap: 28px;
       align-items: center;
     }
+
     .hero-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -90,6 +109,7 @@
       padding: 28px;
       box-shadow: var(--shadow);
     }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -99,56 +119,126 @@
       text-transform: uppercase;
       color: var(--muted);
     }
+
     .eyebrow .dot {
-      width: 8px; height: 8px;
+      width: 8px;
+      height: 8px;
       border-radius: 999px;
       background: var(--lime-strong);
-      box-shadow: 0 0 0 3px rgba(163,230,53,0.35);
+      box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.35);
     }
+
     h1 {
       margin: 12px 0 10px;
       font-size: clamp(28px, 5vw, 44px);
       line-height: 1.15;
     }
-    .subtitle { color: var(--muted); font-size: 15px; }
-    .hero-cta { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hero-cta {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .btn {
-      display: inline-flex; align-items: center; justify-content: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       padding: 10px 14px;
-      border-radius: 12px; border: 1px solid var(--border);
+      border-radius: 12px;
+      border: 1px solid var(--border);
       background: #f8fff1;
-      font-weight: 700; text-decoration: none; color: #14532d;
+      font-weight: 700;
+      text-decoration: none;
+      color: #14532d;
       transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
     }
-    .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); background: #f1ffd1; }
-    .btn-primary { background: linear-gradient(135deg, var(--lime), var(--lime-strong)); color: #12330a; border-color: #d7f49c; }
-    .btn-primary:hover { background: linear-gradient(135deg, #b3f043, #9ad52b); }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+      background: #f1ffd1;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--lime), var(--lime-strong));
+      color: #12330a;
+      border-color: #d7f49c;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #b3f043, #9ad52b);
+    }
 
     .profile {
-      background: radial-gradient(120px 120px at 80% 20%, #eaffb5 0%, rgba(255,255,255,0) 60%), var(--card);
+      background: radial-gradient(120px 120px at 80% 20%, #eaffb5 0%, rgba(255, 255, 255, 0) 60%), var(--card);
       border: 1px solid var(--border);
       border-radius: 22px;
       padding: 24px;
       box-shadow: var(--shadow);
       text-align: center;
     }
+
     .avatar {
-      width: 120px; height: 120px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       border: 6px solid #f2ffd5;
-      box-shadow: 0 15px 24px rgba(163,230,53,0.35);
+      box-shadow: 0 15px 24px rgba(163, 230, 53, 0.35);
       background: url('https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=300&auto=format&fit=crop') center/cover no-repeat;
       margin: 10px auto 14px;
     }
-    .socials { display:flex; justify-content:center; gap:10px; margin-top:10px; }
-    .socials a { font-size:13px; color: #065f46; text-decoration:none; padding:6px 10px; border-radius:8px; background:#ecfccb; border:1px solid #d9f99d; }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .socials a {
+      font-size: 13px;
+      color: #065f46;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: #ecfccb;
+      border: 1px solid #d9f99d;
+    }
 
     /* 공통 섹션 */
-    section { padding: 64px 20px; }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .section-head { display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom: 18px; }
-    .section-head h2 { margin:0; font-size: clamp(22px, 4vw, 30px); }
-    .section-desc { color: var(--muted); font-size: 14px; }
+    section {
+      padding: 64px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(22px, 4vw, 30px);
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 14px;
+    }
 
     /* 프로젝트 */
     .grid {
@@ -156,73 +246,227 @@
       grid-template-columns: repeat(12, 1fr);
       gap: 16px;
     }
-    .col-4 { grid-column: span 4; }
-    @media (max-width: 920px) { .col-4 { grid-column: span 6; } }
-    @media (max-width: 640px) { .col-4 { grid-column: span 12; } }
+
+    .col-4 {
+      grid-column: span 4;
+    }
+
+    @media (max-width: 920px) {
+      .col-4 {
+        grid-column: span 6;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .col-4 {
+        grid-column: span 12;
+      }
+    }
+
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 16px;
       box-shadow: var(--shadow);
-      display: flex; flex-direction: column; gap: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
       transition: transform .15s ease;
     }
-    .card:hover{ transform: translateY(-2px); }
-    .thumb {
-      aspect-ratio: 16/9; border-radius: 12px; background: #ecfccb;
-      border: 1px dashed #d9f99d;
-      display:grid; place-items:center; color:#3f6212; font-weight:700;
-    }
-    .tags { display:flex; gap:6px; flex-wrap:wrap; }
-    .tag { font-size: 12px; padding: 4px 8px; background:#f0fdf4; border:1px solid #dcfce7; border-radius: 999px; color:#14532d; }
 
-    .toolbar { display:flex; gap:10px; flex-wrap:wrap; }
-    .input, select {
-      padding: 10px 12px; border:1px solid var(--border); border-radius: 10px; background:#ffffff;
+    .card:hover {
+      transform: translateY(-2px);
+    }
+
+    .thumb {
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      background: #ecfccb;
+      border: 1px dashed #d9f99d;
+      display: grid;
+      place-items: center;
+      color: #3f6212;
+      font-weight: 700;
+    }
+
+    .tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 12px;
+      padding: 4px 8px;
+      background: #f0fdf4;
+      border: 1px solid #dcfce7;
+      border-radius: 999px;
+      color: #14532d;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .input,
+    select {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #ffffff;
     }
 
     /* 활동 기록(타임라인) */
-    .timeline { position: relative; margin-top: 10px; }
+    .timeline {
+      position: relative;
+      margin-top: 10px;
+    }
+
     .timeline::before {
-      content: ""; position: absolute; top: 0; left: 10px; bottom: 0; width: 2px; background: #e3f2b7;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10px;
+      bottom: 0;
+      width: 2px;
+      background: #e3f2b7;
     }
-    .entry { position: relative; padding-left: 32px; margin: 16px 0; }
+
+    .entry {
+      position: relative;
+      padding-left: 32px;
+      margin: 16px 0;
+    }
+
     .entry::before {
-      content: ""; position: absolute; left: 2px; top: 6px; width: 16px; height: 16px; border-radius: 999px; background: var(--lime-strong); box-shadow: 0 0 0 3px #eaffb5;
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: var(--lime-strong);
+      box-shadow: 0 0 0 3px #eaffb5;
     }
-    .entry h4 { margin: 0 0 6px; }
-    .entry .meta { font-size: 12px; color: var(--muted); }
+
+    .entry h4 {
+      margin: 0 0 6px;
+    }
+
+    .entry .meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
 
     /* 스킬 */
-    .skills { display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; }
-    @media (max-width: 720px){ .skills { grid-template-columns: 1fr; } }
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 720px) {
+      .skills {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .skill {
-      border:1px solid var(--border); border-radius: 12px; padding: 12px; background:#fff; box-shadow: var(--shadow);
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
+
     .meter {
-      position: relative; flex:1; height: 10px; background:#ecfccb; border-radius: 999px; overflow:hidden; border:1px solid #d9f99d; margin: 0 10px;
+      position: relative;
+      flex: 1;
+      height: 10px;
+      background: #ecfccb;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid #d9f99d;
+      margin: 0 10px;
     }
-    .meter > span { position:absolute; left:0; top:0; bottom:0; width: var(--val, 60%); background: linear-gradient(90deg, var(--lime), var(--lime-strong)); }
+
+    .meter>span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: var(--val, 60%);
+      background: linear-gradient(90deg, var(--lime), var(--lime-strong));
+    }
 
     /* 연락처 */
-    form { display:grid; gap:12px; }
-    textarea { min-height: 120px; resize: vertical; }
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
 
     /* 푸터 */
-    footer { border-top:1px solid var(--border); background:#faffea; }
-    .footer-inner{ max-width:1100px; margin: 0 auto; padding: 20px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
-    .small { font-size: 12px; color: var(--muted); }
+    footer {
+      border-top: 1px solid var(--border);
+      background: #faffea;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .small {
+      font-size: 12px;
+      color: var(--muted);
+    }
 
     /* 플로팅 버튼 */
     .float {
-      position: fixed; right: 18px; bottom: 18px; z-index: 60;
-      display:flex; flex-direction:column; gap:10px;
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .fab { width: 48px; height: 48px; border-radius: 999px; border:1px solid #d7f49c; background: linear-gradient(135deg, var(--lime), var(--lime-strong)); box-shadow: 0 10px 24px rgba(163,230,53,0.45); display:grid; place-items:center; font-weight:900; color:#12330a; cursor:pointer; }
+
+    .fab {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      border: 1px solid #d7f49c;
+      background: linear-gradient(135deg, var(--lime), var(--lime-strong));
+      box-shadow: 0 10px 24px rgba(163, 230, 53, 0.45);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #12330a;
+      cursor: pointer;
+    }
   </style>
 </head>
+
 <body>
   <!-- 헤더 -->
   <header>
@@ -242,8 +486,10 @@
   <main class="hero" id="top">
     <section class="hero-card" aria-labelledby="hero-title">
       <div class="eyebrow"><span class="dot"></span> Portfolio</div>
-      <h1 id="hero-title">사용자 중심으로 만드는 <span style="background:linear-gradient(transparent 60%, #eaffb5 60%);">김원중</span>의 포트폴리오</h1>
-      <p class="subtitle">자바(Java)와 스프링(Spring Boot), 그리고 HTML/CSS/JS를 중심으로 한 프로젝트 경험을 정리했습니다. 아래에서 작업물, 공부 기록, 그리고 기술 스택을 확인하실 수 있습니다.</p>
+      <h1 id="hero-title">사용자 중심으로 만드는 <span
+          style="background:linear-gradient(transparent 60%, #eaffb5 60%);">김원중</span>의 포트폴리오</h1>
+      <p class="subtitle">자바(Java)와 스프링(Spring Boot), 그리고 HTML/CSS/JS를 중심으로 한 프로젝트 경험을 정리했습니다. 아래에서 작업물, 공부 기록, 그리고 기술
+        스택을 확인하실 수 있습니다.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#projects">작업물 보기</a>
         <a class="btn" href="#contact">협업 문의</a>
@@ -332,12 +578,24 @@
         <p class="section-desc">자신 있는 기술과 익숙한 도구들</p>
       </div>
       <div class="skills" id="skillList">
-        <div class="skill"><span>Java / Spring</span><div class="meter"><span style="--val:40%"></span></div><span>40%</span></div>
-        <div class="skill"><span>HTML / CSS / JS</span><div class="meter"><span style="--val:30%"></span></div><span>30%</span></div>
-        <div class="skill"><span>C / C++</span><div class="meter"><span style="--val:50%"></span></div><span>50%</span></div>
-        <div class="skill"><span>DB (MySQL)</span><div class="meter"><span style="--val:0%"></span></div><span>0%</span></div>
-        <div class="skill"><span>Git / GitHub</span><div class="meter"><span style="--val:25%"></span></div><span>25%</span></div>
-        <div class="skill"><span>Linux / Shell</span><div class="meter"><span style="--val:10%"></span></div><span>10%</span></div>
+        <div class="skill"><span>Java / Spring</span>
+          <div class="meter"><span style="--val:40%"></span></div><span>40%</span>
+        </div>
+        <div class="skill"><span>HTML / CSS / JS</span>
+          <div class="meter"><span style="--val:30%"></span></div><span>30%</span>
+        </div>
+        <div class="skill"><span>C / C++</span>
+          <div class="meter"><span style="--val:50%"></span></div><span>50%</span>
+        </div>
+        <div class="skill"><span>DB (MySQL)</span>
+          <div class="meter"><span style="--val:0%"></span></div><span>0%</span>
+        </div>
+        <div class="skill"><span>Git / GitHub</span>
+          <div class="meter"><span style="--val:25%"></span></div><span>25%</span>
+        </div>
+        <div class="skill"><span>Linux / Shell</span>
+          <div class="meter"><span style="--val:10%"></span></div><span>10%</span>
+        </div>
       </div>
     </div>
   </section>
@@ -389,29 +647,30 @@
 
   <script>
     // ===== 유틸 =====
-    const $ = (sel, root=document) => root.querySelector(sel);
-    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
     // ===== 푸터 연도 =====
     $('#year').textContent = new Date().getFullYear();
 
     // ===== 스무스 스크롤(내장 지원 브라우저) =====
-    $$('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
+    $$('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
         const id = a.getAttribute('href');
         const el = document.querySelector(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
 
     // ===== 맨 위로 =====
-    $('#toTop').addEventListener('click', ()=> window.scrollTo({ top: 0, behavior: 'smooth' }));
+    $('#toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     // ===== 프로젝트 데이터 (수정/추가 가능) =====
     const defaultProjects = [
-      { id: crypto.randomUUID(), name: 'Board API (Spring Boot)', link: '#', tags:['Java','Spring','REST'], desc:'게시판 API 서버: CRUD, JWT 인증' },
-      { id: crypto.randomUUID(), name: 'Study Group Analyzer', link: '#', tags:['Java','CLI'], desc:'학생 스터디 그룹 통계/분석 도구' },
-      { id: crypto.randomUUID(), name: 'NotionFlow Dashboard', link: '#', tags:['HTML','CSS','JS'], desc:'API 키 관리/캘린더 UI 실험' },
+      { id: crypto.randomUUID(), name: 'No stylesheet', link: 'NoStylesheet.html', tags: ['HTML', 'CSS', 'JavaScript'], desc: '기본페이지' },
+      { id: crypto.randomUUID(), name: 'Style1', link: 'style1.html', tags: ['HTML', 'CSS'], desc: 'style1' },
+      { id: crypto.randomUUID(), name: 'Style2', link: 'style2.html', tags: ['HTML', 'CSS'], desc: 'style2' }, { id: crypto.randomUUID(), name: 'Style3', link: 'style3.html', tags: ['HTML', 'CSS'], desc: 'style3' },
+      { id: crypto.randomUUID(), name: 'Style4', link: 'style4.html', tags:['HTML','CSS', 'JavaScript'], desc:'style4' },
     ];
 
     const LS_KEYS = {
@@ -424,14 +683,14 @@
 
     let projects = load(LS_KEYS.PROJECTS, defaultProjects);
 
-    function renderProjects(list = projects){
+    function renderProjects(list = projects) {
       const grid = $('#projectGrid');
       grid.innerHTML = '';
-      if(list.length === 0){
+      if (list.length === 0) {
         grid.innerHTML = '<div class="card" style="grid-column: span 12;">등록된 프로젝트가 없습니다. "+ 프로젝트 추가" 버튼으로 추가하세요.</div>';
         return;
       }
-      list.forEach(p=>{
+      list.forEach(p => {
         const col = document.createElement('div');
         col.className = 'col-4';
         col.innerHTML = `
@@ -439,7 +698,7 @@
             <div class="thumb">썸네일</div>
             <h3 style="margin:6px 0 4px;">${p.name}</h3>
             <p class="small" style="margin:0 0 6px; color: var(--muted);">${p.desc ?? ''}</p>
-            <div class="tags">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+            <div class="tags">${(p.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}</div>
             <div style="display:flex; gap:8px; margin-top:8px;">
               <a class="btn btn-primary" href="${p.link}" target="_blank" rel="noopener">열기</a>
               <button class="btn" data-del="${p.id}">삭제</button>
@@ -452,22 +711,22 @@
     renderProjects();
 
     // 필터
-    $('#filterInput').addEventListener('input', (e)=>{
+    $('#filterInput').addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase().trim();
       const filtered = projects.filter(p =>
         p.name.toLowerCase().includes(q) ||
-        (p.tags||[]).some(t=>t.toLowerCase().includes(q)) ||
-        (p.desc||'').toLowerCase().includes(q)
+        (p.tags || []).some(t => t.toLowerCase().includes(q)) ||
+        (p.desc || '').toLowerCase().includes(q)
       );
       renderProjects(filtered);
     });
 
     // 추가
-    $('#addProjectBtn').addEventListener('click', ()=>{
+    $('#addProjectBtn').addEventListener('click', () => {
       const name = prompt('프로젝트 이름을 입력하세요.');
-      if(!name) return;
+      if (!name) return;
       const link = prompt('프로젝트 링크(URL)를 입력하세요. (예: https://github.com/사용자/저장소)') || '#';
-      const tags = prompt('태그를 콤마로 구분해 입력(예: Java,Spring,REST)')?.split(',').map(s=>s.trim()).filter(Boolean) ?? [];
+      const tags = prompt('태그를 콤마로 구분해 입력(예: Java,Spring,REST)')?.split(',').map(s => s.trim()).filter(Boolean) ?? [];
       const desc = prompt('간단 설명을 입력하세요.') || '';
       const item = { id: crypto.randomUUID(), name, link, tags, desc };
       projects.unshift(item);
@@ -476,27 +735,27 @@
     });
 
     // 삭제 (이벤트 위임)
-    $('#projectGrid').addEventListener('click', (e)=>{
+    $('#projectGrid').addEventListener('click', (e) => {
       const btn = e.target.closest('button[data-del]');
-      if(!btn) return;
+      if (!btn) return;
       const id = btn.getAttribute('data-del');
-      projects = projects.filter(p=>p.id !== id);
+      projects = projects.filter(p => p.id !== id);
       save(LS_KEYS.PROJECTS, projects);
       renderProjects();
     });
 
     // ===== 활동 기록 =====
     let activity = load(LS_KEYS.ACTIVITY, [
-      { id: crypto.randomUUID(), date: new Date().toISOString().slice(0,10), title: '포트폴리오 페이지 제작', note: 'HTML/CSS/JS 베이스 구현 및 연두 테마 적용' }
+      { id: crypto.randomUUID(), date: new Date().toISOString().slice(0, 10), title: '포트폴리오 페이지 제작', note: 'HTML/CSS/JS 베이스 구현 및 연두 테마 적용' }
     ]);
 
-    function renderActivity(){
+    function renderActivity() {
       const root = $('#timeline');
       root.innerHTML = '';
-      if(activity.length === 0){ root.innerHTML = '<div class="card">아직 기록이 없습니다.</div>'; return; }
+      if (activity.length === 0) { root.innerHTML = '<div class="card">아직 기록이 없습니다.</div>'; return; }
       // 최신 날짜 우선
-      const sorted = [...activity].sort((a,b)=> (a.date < b.date ? 1 : -1));
-      sorted.forEach(item=>{
+      const sorted = [...activity].sort((a, b) => (a.date < b.date ? 1 : -1));
+      sorted.forEach(item => {
         const el = document.createElement('article');
         el.className = 'entry';
         el.innerHTML = `
@@ -510,20 +769,20 @@
 
     renderActivity();
 
-    $('#activityForm').addEventListener('submit', (e)=>{
+    $('#activityForm').addEventListener('submit', (e) => {
       e.preventDefault();
-      const date = $('#actDate').value || new Date().toISOString().slice(0,10);
+      const date = $('#actDate').value || new Date().toISOString().slice(0, 10);
       const title = $('#actTitle').value.trim();
       const note = $('#actNote').value.trim();
-      if(!title || !note){ return; }
+      if (!title || !note) { return; }
       activity.push({ id: crypto.randomUUID(), date, title, note });
       save(LS_KEYS.ACTIVITY, activity);
       e.target.reset();
       renderActivity();
     });
 
-    $('#clearActivity').addEventListener('click', ()=>{
-      if(confirm('활동 기록을 모두 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.')){
+    $('#clearActivity').addEventListener('click', () => {
+      if (confirm('활동 기록을 모두 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) {
         activity = [];
         save(LS_KEYS.ACTIVITY, activity);
         renderActivity();
@@ -531,13 +790,14 @@
     });
 
     // ===== 연락처 폼 (데모) =====
-    $('#contactForm').addEventListener('submit', (e)=>{
+    $('#contactForm').addEventListener('submit', (e) => {
       e.preventDefault();
       // 실제 전송 로직 대신 데모 응답
       $('#contactFeedback').textContent = '메시지가 임시로 저장되었습니다. 실제 전송 로직(API)은 연결 후 사용할 수 있습니다.';
       e.target.reset();
-      setTimeout(()=> $('#contactFeedback').textContent = '', 4000);
+      setTimeout(() => $('#contactFeedback').textContent = '', 4000);
     });
   </script>
 </body>
+
 </html>
